@@ -1,0 +1,106 @@
+<!-- Zoning Bukittinggi 3D App code
+Written by: Lusi Suwandi @ esriindonesia
+Version 1.0 - 2017
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bukittinggi Zoning 3D App</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="asset/logokota.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Questrial|Source+Sans+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.5/esri/css/main.css">
+  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+  <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://js.arcgis.com/4.5/"></script>
+  <script src="js/main.js"></script>
+  <script src="js/charting.js"></script>
+  <script src="js/viz.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="title col-sm-10"><b>Zoning 3D</b> App</div>
+      <div class="menu col-sm-2" style="padding:5px;">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" style="width:200px; background-color:#f2f2f2;" type="button" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-th-large"></span> Menu
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu" style="width:200px;">
+              <li class="infoZona"><a href="#">Informasi Zonasi</a></li>
+              <li class="lingkungan"><a href="#">Setting Lingkungan</a></li>
+              <li class="tentang"><a href="#">Tentang Aplikasi</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12" style="padding:0px;">
+          <div id="welcomePopUp">
+            <h3>Selamat Datang ke Prototipe Aplikasi Zoning 3D</h3>
+            <p>Aplikasi ini dikembangkan untuk menunjukkan penyajian rencana tata ruang dalam bentuk 3 dimensi. <br><br><b>Perhatian:</b> Data dan informasi yang terkandung dalam aplikasi ini merupakan simulasi dan tidak dapat dijadikan referensi.<br>
+            </p>
+            <button id="start" class="btn btn-primary">Klik Untuk Mulai</button><br><br>
+            <img src="asset/atr.png" height="50px">
+          </div>
+          <div class="setLing">
+            <b>Set Pencahayaan</b><br><br>
+            <select class="selectBox form-control" id="waktu">
+              <option value="Sun Nov 5 2017 09:00:00 GMT+0700 (UTC)">Pagi</option>
+              <option value="Sun Nov 5 2017 12:00:00 GMT+0700 (UTC)">Siang</option>
+              <option value="Sun Nov 5 2017 16:00:00 GMT+0700 (UTC)">Sore</option>
+            </select><br>
+          <b>Gunakan Bayangan</b><br><br>
+            <select class="selectBox form-control" id="bayangan">
+              <option value="true">Ya</option>
+              <option value="false">Tidak</option>
+            </select>
+          </div>
+          <div id="slideInfo">
+            <button id="legendBtn" class="btn btn-primary" style="width:80px;">Legenda</button>
+            <button id="filterBtn" class="btn btn-primary" style="width:80px;">Filter</button>
+            <button id="chartBtn" class="btn btn-primary" style="width:80px;">Grafik</button>
+            <div id="legend"></div>
+            <div id="filter">
+              Pilih zona yang ingin ditampilkan. Hasil filter hanya akan menunjukkan intensitas ruang untuk jenis zonasi yang dipilih.
+              (Pastikan layer pola ruang 3D telah aktif).
+              <br><br>
+              <select class="selectBox form-control" style="width:250px;" id="filterZona">
+                <option value="ANY">Lihat Semua</option>
+                <option value="Zona Perumahan">Zona Perumahan</option>
+                <option value="Zona Perdagangan dan Jasa">Zona Perdagangan dan Jasa</option>
+                <option value="Zona Sarana Pelayanan Umum">Zona Sarana Pelayanan Umum</option>
+                <option value="Zona RTH">Zona Ruang Terbuka Hijau</option>
+                <option value="Zona Perlindungan Setempat">Zona Perlindungan Setempat</option>
+                <option value="Zona Perkantoran">Zona Perkantoran</option>
+                <option value="Pertanian Lahan Kering">Zona Pertanian Lahan Kering</option>
+                <option value="Pertanian Lahan Basah">Zona Pertanian Lahan Basah</option>
+                <option value="Zona Khusus">Zona Khusus</option>
+                <option value="Zona Pariwisata">Zona Pariwisata</option>
+                <option value="Zona Peruntukkan Campuran">Zona Peruntukan Campuran</option>
+              </select> <br><br>
+              Untuk melihat detail intensitas, silakan klik pada massa zonasi di dalam peta.
+              <div id="filterResult"></div>
+            </div>
+            <div id="chartTxt" style="z-index:7; height:30px; padding:15px; display:none;">Chart berikut ini menunjukkan jumlah zona pola ruang berdasarkan luas area.</div>
+            <div id="chartDiv">
+            </div>
+          </div>
+          <div id="viewDiv" class="view">
+            <div id="logo"><img src="asset/logokota.png" height="80"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  </html>
