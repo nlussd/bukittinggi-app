@@ -37,10 +37,14 @@ html,body{
 .view{
   height: 612px;
   position: relative;
+
 }
 
 #logo{
   height: 80px;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Questrial";
 }
 
 #welcomePopUp{
