@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="mly-wrapper">
+    <div id="mly"></div>
+    <p class="Notice block black bg-yellow h6 p1 center" data-dojo-attach-point="noticeNode">Click on the map to display the location</p>
+    <div class="mapillary-maximize" data-dojo-attach-point="maximizeNode"></div>
+    <div class="mapillary-minimize" data-dojo-attach-point="minimizeNode"></div>
+  </div>
+  <div data-dojo-type="dijit/form/Form" data-dojo-attach-point="form">
+    <div class="form-group row">
+      <h3>Mapillary</h3>
+      <label>
+        <input name="coverage" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="coverage" type="checkbox">
+        Show Mapillary coverage
+      </label>
+    </div>
+
+    <div class="form-group row">
+      <h3>Traffic Signs</h3>
+      <label>
+        <input name="trafficsigns" data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="trafficSigns" type="checkbox">
+        Show detected traffic signs
+      </label>
+    </div>
+
+    <div class="form-group row">
+      <h3>User <span class="info">Works on zoom levels 15 and above - try to zoom in.</span></h3>
+      <div name="userList" data-dojo-attach-point="userList" data-dojo-type="widgets/Mapillary/TagCloud" data-dojo-props="labelAttr:'username'"></div>
+      <input name="userSearch" placeholder="Username" data-dojo-attach-point="userSearch" data-dojo-type="dijit/form/ComboBox" data-dojo-props="required:false" style="width:100%">
+    </div>
+
+    <div class="form-group row">
+      <h3 style="clear:both">Date</h3>
+      <input name="fromDate" data-dojo-attach-point="fromDate" placeholder="From" data-dojo-type="dijit/form/DateTextBox" style="width:49%;float:left;margin-right:2%">
+      <input name="toDate" data-dojo-attach-point="toDate" placeholder="To" data-dojo-type="dijit/form/DateTextBox" style="width:49%">
+    </div>
+</div>
