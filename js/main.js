@@ -157,7 +157,7 @@ require([
   };
 
   var polaRuang3d = new SceneLayer({
-    url: "https://services8.arcgis.com/TWq7UjmDRPE14lEV/ArcGIS/rest/services/Pola_Ruang_Bukittinggi/SceneServer/layers/1",
+    url: "https://services9.arcgis.com/8Y7Trd8yKyEknquW/ArcGIS/rest/services/Ruang_BKT/SceneServer/layers/0",
     popupEnabled: true,
     popupTemplate: polaTemplate,
     title: "Pola Ruang (3D)",
