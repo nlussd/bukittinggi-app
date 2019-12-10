@@ -106,7 +106,7 @@ require([
 
   //scenelayer untuk bangunan eksisting
   var bangunan = new SceneLayer({
-    url: "https://services8.arcgis.com/TWq7UjmDRPE14lEV/arcgis/rest/services/Building_BKT/SceneServer/0",
+    url: "https://tiles.arcgis.com/tiles/8Y7Trd8yKyEknquW/arcgis/rest/services/building_BKT_2/SceneServer",
     popupEnabled: true,
     title: "Bangunan (Eksisting)",
     visible: true
