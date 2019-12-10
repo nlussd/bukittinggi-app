@@ -12,7 +12,7 @@ require([
 ], function(QueryTask, Query, StatisticDefinition) {
 
   var queryZoningTask = new QueryTask({
-    url: "https://services8.arcgis.com/TWq7UjmDRPE14lEV/arcgis/rest/services/Rencana_Pola_Ruang/FeatureServer/0"
+    url: "https://services9.arcgis.com/8Y7Trd8yKyEknquW/arcgis/rest/services/Pola_BKT/FeatureServer/0"
   });
 
   var queryArea = new Query();
